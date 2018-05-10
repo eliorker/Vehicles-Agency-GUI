@@ -10,6 +10,7 @@ import createVehiclesFrames.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension; // help to store heights and widths
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -32,7 +33,9 @@ public class MenuFrame  extends JFrame {
 	
 	public MenuFrame(){
 		JPanel Toppanel = new JPanel();
-		JPanel MiddelPanel = new JPanel();
+	    JScrollPane scrollPane = new JScrollPane(Toppanel,   ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	    scrollPane.setPreferredSize(new Dimension(300, 300));
+	    JPanel MiddelPanel = new JPanel();
 		String [] options = {"Add new Vehcile" , "Buy a Vehicle" , "Test Drive" , "Reset Vehicles km" , "Change Vehicles flag" , "Exit"};
 		ListenForButton lForButton = new ListenForButton();
 		for(int i=0 ; i <6 ; i++) {
@@ -44,6 +47,7 @@ public class MenuFrame  extends JFrame {
 		for(int i=0 ; i<mainApp.getVehicles().size() ; i++) {
 			Toppanel.add(RbuttonArray[i] = new JRadioButton(mainApp.getImages().get(i)));
 			RbuttonArray[i].setToolTipText(mainApp.getVehicles().get(i).toString());
+			RbuttonArray[i].setBorderPainted(true);
 		}
 		ButtonGroup bg = new ButtonGroup();
 		
@@ -52,6 +56,7 @@ public class MenuFrame  extends JFrame {
 			bg.add(RbuttonArray[i]) ;
 			RbuttonArray[i].addActionListener(lForRadioButton);
 		}	
+		//bg.getSelection()
 		
 		this.setSize(700,700); //frame size
 		this.setTitle("Vehicle Management Menu");
@@ -68,7 +73,7 @@ public class MenuFrame  extends JFrame {
 			MiddelPanel.add(buttons[i]);
 		}
 		this.setLayout(new GridLayout(2, 4));
-		this.add(Toppanel);
+		this.add(scrollPane);
 		this.add(MiddelPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // real exit when clicking the X button
 		
@@ -122,16 +127,18 @@ public class MenuFrame  extends JFrame {
 			frame.setLayout(new GridLayout(2,1));
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 			frame.setVisible(true);
+
 		 	tbutton.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent ae) {
+			    	try {
 							mainApp.getVehicles().get(getchooseVehicle()).setKilometraz(Integer.parseInt(tmpText.getText()));
+			    	}catch(NumberFormatException e) {JOptionPane.showMessageDialog(frame, "Only numbers please");}
 							MenuFrame temp = new MenuFrame(); 
 							frame.dispose();
 							setVisible(false);
 							temp.setVisible(true);
 						}
 			});
-			
 			}
 		 
 		 

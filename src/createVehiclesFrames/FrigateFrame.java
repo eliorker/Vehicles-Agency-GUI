@@ -71,6 +71,8 @@ public class FrigateFrame extends JFrame {
 		middlePanel.add(label2 = new JLabel("Max passengers"));
 		middlePanel.add(text1 = new JTextArea("Max passengers"));
 		text1.setBorder(border);
+		text1.setLineWrap(true);
+		text1.setWrapStyleWord(true);
 		middlePanel.add(label3 = new JLabel("Max speed:"));
 		middlePanel.add(text2 = new JTextArea("Max speed"));
 		text2.setBorder(border);

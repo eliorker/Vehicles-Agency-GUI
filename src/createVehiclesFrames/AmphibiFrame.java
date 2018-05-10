@@ -64,7 +64,7 @@ public class AmphibiFrame extends JFrame {
 		JPanel topPanel = new JPanel();
 		JPanel middlePanel = new JPanel();
 		JPanel container = new JPanel();
-		
+		this.setResizable(false);
 		middlePanel.setLayout(new GridLayout(9, 2 ,14 ,14));
 		//downPanel.setLayout(new GridLayout(6, 1,0,0));
 		topPanel.add(label1 = new JLabel("Enter The Amphibi vehicle Details"));
@@ -73,6 +73,8 @@ public class AmphibiFrame extends JFrame {
 		middlePanel.add(label2 = new JLabel("Max speed"));
 		middlePanel.add(text1 = new JTextArea("Max speed"));
 		text1.setBorder(border);
+		text1.setBorder(border);
+		text1.setLineWrap(true);
 		middlePanel.add(label3 = new JLabel("Model:"));
 		middlePanel.add(text2 = new JTextArea("Model"));
 		text2.setBorder(border);

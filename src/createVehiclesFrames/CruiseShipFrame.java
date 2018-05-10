@@ -79,7 +79,8 @@ public class CruiseShipFrame extends JFrame {
 		middlePanel.add(label2 = new JLabel("Max speed"));
 		middlePanel.add(text1 = new JTextArea("Max speed"));
 		text1.setBorder(border);
-		
+		text1.setBorder(border);
+		text1.setLineWrap(true);
 		middlePanel.add(label3 = new JLabel("Model:"));
 		middlePanel.add(text2 = new JTextArea("Model"));
 		text2.setBorder(border);
